@@ -6,13 +6,14 @@ sap.ui.define(["sap/ui/core/mvc/View", "sap/m/App", "sap/m/Page"], function (Vie
             return "com.myorg.myui5app.controller.MainView";
         },
 
-        createContent: function () {
-            var oInput = new sap.m.Input({
+        createContent: function (oController) {
+            var oInput = new sap.m.Input("idInput", {
                 placeholder: "Enter Name",
             });
 
             var oBtn = new sap.m.Button({
                 text: "Submit",
+                press: [oController.goToSecondPage, oController],
             });
             return new App(this.createId("idAppControl"), {
                 pages: new Page({
